@@ -12,6 +12,11 @@
     flex: 1 1 0;
     margin: 20px;
     border-radius: 7px;
+
+    display:flex;
+    font-size: 50px;
+    font-family: monospace;
+    justify-content: right;
 }
  
 .row {
@@ -25,11 +30,30 @@
 }
 
 #footer {
-    flex: 0.5 1 0;
+    flex: 0.4 1 0;
+    margin: 0px 20px;
+
+    font-size: 10px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    display: flex;
+    justify-content: right;
 }
 
 button {
     width:50px;
     height:50px;
     border-radius: 7px;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#division,
+#multiplication,
+#addition,
+#subtraction {
+    background-color: #ffcc00;
+    border-color: #d3aa04;
 }
