@@ -4,12 +4,14 @@
     height: 400px;
     display: flex;
     flex-direction: column;   
+    border-radius: 7px;
 }
 
 #screen {
     background-color: #65acb9;
     flex: 1 1 0;
     margin: 20px;
+    border-radius: 7px;
 }
  
 .row {
@@ -19,6 +21,7 @@
     justify-content: space-around;
     align-items: center;
     margin: 0px 20px;
+    border-radius: 7px;
 }
 
 #footer {
@@ -28,4 +31,5 @@
 button {
     width:50px;
     height:50px;
+    border-radius: 7px;
 }
