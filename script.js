@@ -67,16 +67,18 @@ console.log(Number(3 + '+' + 4))
 
 numberButtons.forEach(element => {
     element.addEventListener('click', (event) => {
-        if (screen.textContent === "0") {
+        
+        if (memoryHandler.num1 === null) {
             screen.textContent = "";
         }
 
-        if (memoryHandler.num1 && memoryHandler.operation !== null) {
+        if (memoryHandler.num1 !== null && memoryHandler.operation !== null && memoryHandler.num2 === null) {
             screen.textContent = "";
         }
 
         if (screen.textContent.length !== 9){
             screen.textContent += event.target.textContent;
+            console.log(screen.textContent)
 
             if (memoryHandler.operation === null || memoryHandler.num1 === null) {
                 memoryHandler.num1 = screen.textContent;
@@ -84,6 +86,7 @@ numberButtons.forEach(element => {
                 memoryHandler.num2 = screen.textContent;
             }
         }
+        console.table(memoryHandler)
     })
 })
 
@@ -94,6 +97,10 @@ allClear.addEventListener('click', (event) => {
 
 operatorButtons.forEach(element => {
     element.addEventListener('click', event => {
+        if (memoryHandler.num1 === null && memoryHandler.num2 === null) {
+            return
+        }
+
         if (memoryHandler.num2 !== null && memoryHandler.operation !== null) {
             screen.textContent = memoryHandler.result;
             equateNumbers();
@@ -103,5 +110,6 @@ operatorButtons.forEach(element => {
 })
 
 equalsButton.addEventListener('click', event => {
-    equateNumbers()
+    equateNumbers();
+    memoryHandler.resetMemory();
 })
