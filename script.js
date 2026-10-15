@@ -25,18 +25,24 @@ function equateNumbers() {
             break;
 
         case "÷":
+            if (num2 === 0) {
+                screen.textContent = "No."
+                memoryHandler.error = true
+                break
+            }
             memoryHandler.result = num1 / num2;
             break;
     }
 
     console.table(memoryHandler);
 
-    screen.textContent = memoryHandler.result;
-    memoryHandler.num1 = memoryHandler.result;
+    if (memoryHandler.error === false){
+        screen.textContent = memoryHandler.result;
+        memoryHandler.num1 = memoryHandler.result;
 
-    memoryHandler.operation = null;
-    memoryHandler.num2 = null;
-
+        memoryHandler.operation = null;
+        memoryHandler.num2 = null;
+    }
 }
 
 
@@ -53,12 +59,14 @@ let memoryHandler = {
     'num2': null,
     'operation': null,
     'result': null,
+    'error': false,
 
     resetMemory() {
         this.num1 = null;
         this.num2 = null;
         this.operation = null;
         this.result = null;
+        this.error = false;
     },
 }
 
@@ -70,6 +78,11 @@ numberButtons.forEach(element => {
         
         if (memoryHandler.num1 === null) {
             screen.textContent = "";
+        }
+
+        if (memoryHandler.error) {
+            screen.textContent = "";
+            memoryHandler.error = false;
         }
 
         if (memoryHandler.num1 !== null && memoryHandler.operation !== null && memoryHandler.num2 === null) {
@@ -98,7 +111,12 @@ allClear.addEventListener('click', (event) => {
 operatorButtons.forEach(element => {
     element.addEventListener('click', event => {
         if (memoryHandler.num1 === null && memoryHandler.num2 === null) {
-            return
+            return;
+        }
+
+        if (memoryHandler.error) {
+            screen.textContent = "";
+            memoryHandler.error = false;
         }
 
         if (memoryHandler.num2 !== null && memoryHandler.operation !== null) {
