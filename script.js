@@ -111,5 +111,4 @@ operatorButtons.forEach(element => {
 
 equalsButton.addEventListener('click', event => {
     equateNumbers();
-    memoryHandler.resetMemory();
 })
