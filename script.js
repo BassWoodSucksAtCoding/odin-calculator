@@ -1,7 +1,7 @@
 // Functions
 function equateNumbers() {
-    num1 = memoryHandler.num1;
-    num2 = memoryHandler.num2;
+    num1 = Number(memoryHandler.num1);
+    num2 = Number(memoryHandler.num2);
     operation = memoryHandler.operation;
 
     if (operation === null || num2 === null) {
@@ -63,10 +63,14 @@ numberButtons.forEach(element => {
             screen.textContent = "";
         }
 
+        if (memoryHandler.num1 && memoryHandler.operation !== null) {
+            screen.textContent = "";
+        }
+
         if (screen.textContent.length !== 9){
             screen.textContent += event.target.textContent;
 
-            if (memoryHandler.operation === '') {
+            if (memoryHandler.operation === null) {
                 memoryHandler.num1 = screen.textContent;
             } else {
                 memoryHandler.num2 = screen.textContent;
